@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -10,7 +12,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 
 // MongoDB Connection
-const dbURI = process.env.MONGODB_URI || 'mongodb+srv://zenpackdb.zh97j4v.mongodb.net/" --apiVersion 1 --username mohamedrb --password uTgu5FDm139BNDnc';
+const dbURI = process.env.MONGODB_URI;
 mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
